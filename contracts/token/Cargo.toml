@@ -1,0 +1,20 @@
+[package]
+name = "gotchi-token"
+version = "0.1.0"
+edition = "2021"
+description = "$GOTCHI token program for Arch Network"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+arch-program = "0.5.4"
+borsh = "0.10.3"
+
+[dev-dependencies]
+solana-program-test = "1.18"
+
+[profile.release]
+opt-level = 3
+lto = true
+overflow-checks = true

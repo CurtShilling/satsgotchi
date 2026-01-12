@@ -1,0 +1,46 @@
+[package]
+name = "satsgotchi-oracle"
+version = "0.1.0"
+edition = "2021"
+description = "Oracle service syncing Bitcoin Ordinals to Arch Network"
+
+[[bin]]
+name = "oracle"
+path = "src/main.rs"
+
+[dependencies]
+# Arch SDK
+arch-program = "0.5.4"
+
+# Bitcoin
+bitcoincore-rpc = "0.18"
+
+# Async runtime
+tokio = { version = "1.35", features = ["full"] }
+
+# HTTP client
+reqwest = { version = "0.11", features = ["json"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+borsh = "0.10.3"
+
+# Database
+rusqlite = { version = "0.30", features = ["bundled"] }
+
+# Utilities
+thiserror = "1.0"
+hex = "0.4"
+
+# Logging
+env_logger = "0.11"
+log = "0.4"
+
+[dev-dependencies]
+mockito = "1.2"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
